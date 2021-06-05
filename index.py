@@ -7,6 +7,7 @@ from discord.ext import commands
 from discord_slash import SlashCommand
 from discord_slash.utils.manage_commands import create_option
 import webbrowser
+from pythonping import ping
 
 # Read the yaml config file, contains hidden variables
 with open("config.yaml", "r") as file:
@@ -20,6 +21,7 @@ banned_processes = config['BANNEDPROCESSES']
 token = config['TOKEN']
 username = config['USERNAME']
 guild_ids = config['GUILDIDS']
+server_ip = config['SERVERIP']
 
 
 # Initalise the bot client
@@ -107,6 +109,15 @@ async def quote(ctx, quote: str):
     f.write(f"\n\"{quote}\"")
     # Closes the quotes file
     f.close()
+
+# Create the add quote to book command
+@slash.slash(name="serverping", description="Checks the ping and online status of a server")
+async def serverping(ctx):
+    response = ping(server_ip)
+    if response.rtt_avg_ms >= 2000:
+      await ctx.send(content="🔴 The server is offline")
+    else:
+      await ctx.send(content=f"🟢 The server is online")
 
 # Run the bot with the provided token
 bot.run(token)
