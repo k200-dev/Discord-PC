@@ -118,6 +118,19 @@ async def serverping(ctx):
       await ctx.send(content="🔴 The server is offline")
     else:
       await ctx.send(content=f"🟢 The server is online")
+  
+@slash.slash(name="restart", description="Restart the PC")
+async def restart(ctx):
+  # Saves a list of all the running processes on the PC
+    output = os.popen('wmic process get description, processid').read()
+    # Check if a banned process is running and stop the command if true
+    for x in banned_processes:
+      if x in output:
+       await ctx.send(f"⚠️ **{username}** is currently running a banned process. **({x})**")
+       return
+    # Restart the PC and send the confirmation message to the channel
+    os.system("shutdown /r /t 1")
+    await ctx.send(f"🔒 Restarted **{username}s** PC")
 
 # Run the bot with the provided token
 bot.run(token)
