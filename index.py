@@ -20,7 +20,6 @@ banned_words = config['BANNEDWORDS']
 banned_processes = config['BANNEDPROCESSES']
 token = config['TOKEN']
 username = config['USERNAME']
-guild_ids = config['GUILDIDS']
 server_ip = config['SERVERIP']
 
 
