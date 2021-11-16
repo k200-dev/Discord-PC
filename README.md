@@ -46,7 +46,5 @@ A discord bot that interacts directly with a Windows 10 computer. Written in Pyt
 
 Run `index.py` through python or a process manager like pm2
 
-![Image of the RAT server](https://files.k200.site/github-Windows-Python-RAT-example.png)
-
 [stars-shield]: https://img.shields.io/github/stars/k200-dev/DiscordPC.svg?style=for-the-badge
 [stars-url]: https://github.com/k200-dev/DiscordPC/stargazers
